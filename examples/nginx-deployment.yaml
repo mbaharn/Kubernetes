@@ -1,0 +1,20 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata: 
+  name: nginx-deployment
+  labels:
+     role: web
+     version: v1
+spec:
+  replicas: 2
+  template: 
+    metadata:
+      labels:
+        role: web
+    spec:
+      containers:
+        - name: app
+          image: nginx:1.9.5
+          ports:
+          - containerPort: 80
+            protocol: TCP
